@@ -1,5 +1,6 @@
 package hiber.dao;
 
+import hiber.model.Car;
 import hiber.model.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -29,17 +30,10 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public User findUserByCar(int series, String model) {
-        Query query = sessionFactory.getCurrentSession().createQuery("from User where Car.series = :series and Car.model = :model");
-        return (User) query.setParameter("series", series).setParameter("model", model).uniqueResult();
+        Query query = sessionFactory.getCurrentSession()
+                .createQuery("SELECT u FROM User u JOIN u.car c WHERE c.series = :carSeries AND c.model = :carModel");
+        return (User) query.setParameter("carSeries", series)
+                .setParameter("carModel", model)
+                .uniqueResult();
     }
-
 }
-
-/*
-String hql = "FROM User WHERE name = :paramName";
-Query query = session.createQuery(hql);
-query.setParameter("paramName", "Alex");
-
-// Получаем единственный результат
-User user = (User) query.uniqueResult();
- */

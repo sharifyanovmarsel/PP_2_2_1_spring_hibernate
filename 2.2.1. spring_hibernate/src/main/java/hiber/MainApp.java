@@ -25,7 +25,6 @@ public class MainApp {
         userService.add(new User("User5", "Lastname4", "user4@mail.ru", new Car(123456, "Ford")));
         userService.add(new User("User6", "Lastname4", "user4@mail.ru", new Car(777, "Lexus")));
 
-
         List<User> users = userService.listUsers();
         for (User user : users) {
             System.out.println("Id = " + user.getId());
@@ -36,7 +35,7 @@ public class MainApp {
             System.out.println("Car = " + user.getCar());
             System.out.println();
         }
-
+        //Метод, который вытаскивает пользователя по серии и модели автомобиля:
         System.out.println(userService.findUserByCar(123456, "Ford"));
 
         context.close();
