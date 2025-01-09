@@ -37,6 +37,8 @@ public class MainApp {
         }
         //Метод, который вытаскивает пользователя по серии и модели автомобиля:
         System.out.println(userService.findUserByCar(123456, "Ford"));
+        User marsel = userService.findUserByCar(777, "Lexus");
+        System.out.println(marsel);
 
         context.close();
     }

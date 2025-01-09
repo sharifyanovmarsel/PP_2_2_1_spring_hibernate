@@ -2,8 +2,6 @@ package hiber.model;
 
 import javax.persistence.*;
 
-//Создайте сущность Car с полями String model и int series,
-// на которую будет ссылаться User с помощью связи one-to-one.
 @Entity
 @Table(name = "car")
 public class Car {
